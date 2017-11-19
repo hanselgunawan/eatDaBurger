@@ -3,33 +3,30 @@
 <p>Manage your burgers with this app</p>
 
 <!-- Pass in data from server.js -->
+<h2>UNDEVOURED BURGERS:</h2>
 <ul>
-    {{#each quotes}}
-        <li>
-            <p><span class="label">ID:</span> {{this.id}}</p>
-            <p><span class="label">Quote:</span> {{this.quote}}</p>
-            <p><span class="label">Author:</span> {{this.author}}</p>
-
-            <button data-id="{{this.id}}" class="delquote">Delete</button>
-
-            <a href="/{{this.id}}">Update this quote</a>
-        </li>
+    {{#each burgers}}
+        {{#unless devoured}}
+            <li>
+                <p><span class="label">ID:</span> {{burgerID}}</p>
+                <p><span class="label">Burger Name:</span> {{burgerName}}</p>
+                <p><span class="label">Devoured Status:</span> {{devouredStatus}}</p>
+                <p><span class="label">Inserted Date:</span> {{date}}</p>
+            </li>
+        {{/unless}}
     {{/each}}
 </ul>
 
-<h2>Add a Quote</h2>
-
-<form class="create-form">
-
-    <div class="form-group">
-        <label for="auth">Author:</label>
-        <input type="text" id="auth" name="author">
-    </div>
-
-    <div class="form-group">
-        <label for="quo">Quote:</label>
-        <textarea id="quo" name="quote" rows="8" cols="40"></textarea>
-    </div>
-
-    <button type="submit">Add Quote</button>
-</form>
+<h2>DEVOURED BURGERS:</h2>
+<ul>
+    {{#each burgers}}
+        {{#if devoured}}
+            <li>
+                <p><span class="label">ID:</span> {{burgerID}}</p>
+                <p><span class="label">Burger Name:</span> {{burgerName}}</p>
+                <p><span class="label">Devoured Status:</span> {{devouredStatus}}</p>
+                <p><span class="label">Inserted Date:</span> {{date}}</p>
+            </li>
+        {{/if}}
+    {{/each}}
+</ul>
