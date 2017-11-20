@@ -20,7 +20,7 @@
                     <tr>
                         <td class="text-center">{{burgerID}}</td>
                         <td>{{burgerName}}</td>
-                        <td class="text-center">
+                        <td>
                             <form action="/burger/{{burgerID}}?_method=PUT" method="POST"><!-- FORM only have 2 actions: POST and GET. That's why we use method-override -->
                                 <input type="submit" class="btn-success" value="Devour It!">
                             </form>
