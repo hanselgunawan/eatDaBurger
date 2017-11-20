@@ -3,7 +3,7 @@
  */
 var burgerModel = require("../models/burger.js");
 const express = require("express");
-const router = express.Route;
+const router = express.Router();
 
 router.get("/", function (req, res) {
     burgerModel.selectAll("burgers", function (data) {
@@ -15,13 +15,13 @@ router.get("/", function (req, res) {
 });
 
 router.post("/burger/insert", function (req, res) {
-    burgerModel.insertOne("burgers", "burgerName", "devouredStatus", "date", req.body.burger_name, function (res) {
+    burgerModel.insertOne("burgers", "burgerName", "devouredStatus", "date", req.body.inputted_burger_name, function (data) {
         res.redirect("/");
     });
 });
 
 router.put("/burger/:burgerID", function (req, res) {
-    burgerModel.updateOne("burgers", "devouredStatus", req.params.burgerID, function (res) {
+    burgerModel.updateOne("burgers", "devouredStatus", req.params.burgerID, function (data) {
         res.redirect("/");
     });
 });

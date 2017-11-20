@@ -1,32 +1,61 @@
-<h1>Eat Da Burger - App</h1>
-
-<p>Manage your burgers with this app</p>
-
-<!-- Pass in data from server.js -->
-<h2>UNDEVOURED BURGERS:</h2>
-<ul>
-    {{#each burgers}}
-        {{#unless devoured}}
-            <li>
-                <p><span class="label">ID:</span> {{burgerID}}</p>
-                <p><span class="label">Burger Name:</span> {{burgerName}}</p>
-                <p><span class="label">Devoured Status:</span> {{devouredStatus}}</p>
-                <p><span class="label">Inserted Date:</span> {{date}}</p>
-            </li>
-        {{/unless}}
-    {{/each}}
-</ul>
-
-<h2>DEVOURED BURGERS:</h2>
-<ul>
-    {{#each burgers}}
-        {{#if devoured}}
-            <li>
-                <p><span class="label">ID:</span> {{burgerID}}</p>
-                <p><span class="label">Burger Name:</span> {{burgerName}}</p>
-                <p><span class="label">Devoured Status:</span> {{devouredStatus}}</p>
-                <p><span class="label">Inserted Date:</span> {{date}}</p>
-            </li>
-        {{/if}}
-    {{/each}}
-</ul>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="jumbotron" style="text-align: center">
+            <h1 class="text-center">Eat Da Burger</h1>
+            <img src="/img/burger.png">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <h2>UNDEVOURED BURGERS:</h2>
+        <table class="table table-condensed">
+            <tr>
+                <th class="text-center">Burger ID</th>
+                <th>Burger Name</th>
+                <th>Action</th>
+            </tr>
+            {{#each burgers}}
+                {{#unless devouredStatus}}
+                    <tr>
+                        <td class="text-center">{{burgerID}}</td>
+                        <td>{{burgerName}}</td>
+                        <td class="text-center">
+                            <form action="/burger/{{burgerID}}?_method=PUT" method="POST"><!-- FORM only have 2 actions: POST and GET. That's why we use method-override -->
+                                <input type="submit" class="btn-success" value="Devour It!">
+                            </form>
+                        </td>
+                    </tr>
+                {{/unless}}
+            {{/each}}
+        </table>
+    </div>
+    <div class="col-lg-6">
+        <h2>DEVOURED BURGERS:</h2>
+        <table class="table table-condensed">
+            <tr>
+                <th>Burger ID</th>
+                <th>Burger Name</th>
+            </tr>
+            {{#each burgers}}
+                {{#if devouredStatus}}
+                    <tr>
+                        <td>{{burgerID}}</td>
+                        <td>{{burgerName}}</td>
+                    </tr>
+                {{/if}}
+            {{/each}}
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <form method="POST" action="/burger/insert">
+            <label>Burger Name</label>
+            <input type="text" class="form-control" name="inputted_burger_name" placeholder="Burger Name..." required>
+            <input type="submit" class="btn-primary" value="Add New Burger" style="margin-top: 10px">
+        </form>
+    </div>
+    <div class="col-lg-4"></div>
+</div>

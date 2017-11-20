@@ -1,5 +1,5 @@
 const express = require("express");
-const methodOverride = require("method-overwrite");
+const methodOverride = require("method-override");
 const bodyParser = require("body-parser");
 
 var app = express();
@@ -12,12 +12,15 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+//override with POST having ?_method = PUT
+app.use(methodOverride('_method'));//HTML5 Method only have POST and GET
+
 var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var routes = require('./controllers/burgers_controller.js');
+var routes = require('./controllers/burger_controllers.js');
 app.use('/', routes);
 
 app.listen(port, function() {
