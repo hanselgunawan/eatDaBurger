@@ -12,6 +12,7 @@ These are the technologies that I used to built this app:
 * [Body Parser](https://www.npmjs.com/package/body-parser)
 * [Handlebars](http://handlebarsjs.com)
 * [Heroku](https://dashboard.heroku.com/apps)
+* [ClearDB MySQL] (https://elements.heroku.com/addons/cleardb)
 
 ## NPM
 These are the NPMs that need to be installed:
