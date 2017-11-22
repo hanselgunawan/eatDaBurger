@@ -14,7 +14,7 @@ These are the technologies that I used to built this app:
 * [Heroku](https://dashboard.heroku.com/apps)
 
 ## NPM
-These are the NPM that need to be installed:
+These are the NPMs that need to be installed:
 * `npm install express`
 * `npm install body-parser`
 * `npm install method-override`
