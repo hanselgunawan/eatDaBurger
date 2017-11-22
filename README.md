@@ -45,7 +45,7 @@ These are the NPM that need to be installed:
 │
 ├── public
 │   └─ img
-|		└─ burger.png
+|	└─ burger.png
 ├── server.js
 │
 └── views
